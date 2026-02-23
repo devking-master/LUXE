@@ -2,7 +2,7 @@ import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../../AuthContext/CartContext";
 import { privateApiClient } from "../../lib/client";
-import { Loader2, ShieldCheck, CreditCard } from "lucide-react";
+import { Loader2, ShieldCheck, CreditCard, ShoppingBag } from "lucide-react";
 
 const Checkout = () => {
   const { cart, clearCart } = useCart();
