@@ -69,7 +69,7 @@ const chartOptions = {
       grid: { display: false },
       ticks: {
         color: "#71717a",
-        font: { size: 12 },
+        font: { size: 10 },
       },
     },
     y: {
@@ -79,7 +79,7 @@ const chartOptions = {
       },
       ticks: {
         color: "#71717a",
-        font: { size: 12 },
+        font: { size: 10 },
       },
       border: { display: false },
     },
@@ -87,12 +87,12 @@ const chartOptions = {
 };
 
 const StatCard = ({ label, value, trend }) => (
-  <div className="bg-white p-6 rounded-xl border border-zinc-200 shadow-sm flex flex-col items-start gap-2">
-    <h3 className="text-sm font-medium text-zinc-500">{label}</h3>
+  <div className="bg-white p-4 md:p-6 rounded-xl border border-zinc-200 shadow-sm flex flex-col items-start gap-2">
+    <h3 className="text-xs md:text-sm font-medium text-zinc-500">{label}</h3>
     <div className="flex items-end gap-3 w-full justify-between">
-      <p className="text-3xl font-bold text-zinc-900 tracking-tight">{value}</p>
+      <p className="text-2xl md:text-3xl font-bold text-zinc-900 tracking-tight">{value}</p>
       {trend && (
-         <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">{trend}</span>
+        <span className="text-[10px] md:text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">{trend}</span>
       )}
     </div>
   </div>
@@ -100,24 +100,24 @@ const StatCard = ({ label, value, trend }) => (
 
 const DashboardHome = () => {
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 md:space-y-8">
       <div>
         <h2 className="text-2xl font-bold tracking-tight text-zinc-900">Dashboard</h2>
-        <p className="text-zinc-500">Overview of your store's performance.</p>
+        <p className="text-zinc-500 text-sm md:text-base">Overview of your store's performance.</p>
       </div>
 
       {/* Summary Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         <StatCard label="Total Revenue" value="$12,340" trend="+12.5%" />
         <StatCard label="Total Orders" value="532" trend="+4.3%" />
         <StatCard label="Active Users" value="1,245" trend="+8.1%" />
       </div>
 
       {/* Chart */}
-      <div className="bg-white rounded-xl border border-zinc-200 shadow-sm p-6 h-96">
-        <h3 className="text-lg font-semibold text-zinc-900 mb-6">Revenue & Orders</h3>
-        <div className="h-full pb-6">
-           <Bar data={chartData} options={chartOptions} />
+      <div className="bg-white rounded-xl border border-zinc-200 shadow-sm p-4 md:p-6 h-[300px] md:h-96">
+        <h3 className="text-base md:text-lg font-semibold text-zinc-900 mb-4 md:mb-6">Revenue & Orders</h3>
+        <div className="h-48 md:h-[calc(100%-3rem)] pb-4 md:pb-6 relative w-full">
+          <Bar data={chartData} options={{ ...chartOptions, maintainAspectRatio: false }} />
         </div>
       </div>
     </div>

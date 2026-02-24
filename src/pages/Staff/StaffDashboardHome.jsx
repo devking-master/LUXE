@@ -61,7 +61,7 @@ const chartOptions = {
         color: "#52525b",
         usePointStyle: true,
         pointStyle: "circle",
-        font: { size: 12, family: "inherit" },
+        font: { size: 10, family: "inherit" },
       },
     },
     title: { display: false },
@@ -79,7 +79,7 @@ const chartOptions = {
       grid: { display: false },
       ticks: {
         color: "#71717a",
-        font: { size: 12 },
+        font: { size: 10 },
       },
     },
     y: {
@@ -89,7 +89,7 @@ const chartOptions = {
       },
       ticks: {
         color: "#71717a",
-        font: { size: 12 },
+        font: { size: 10 },
       },
       border: { display: false },
     },
@@ -97,16 +97,16 @@ const chartOptions = {
 };
 
 const StatCard = ({ label, value, icon: Icon, trend }) => (
-  <div className="bg-white p-6 rounded-xl border border-zinc-200 shadow-sm flex flex-col gap-4">
+  <div className="bg-white p-4 md:p-6 rounded-xl border border-zinc-200 shadow-sm flex flex-col gap-3 md:gap-4">
     <div className="flex items-center justify-between">
-       <div className="p-2 bg-zinc-50 rounded-lg">
-          <Icon className="w-5 h-5 text-zinc-900" />
-       </div>
-       {trend && <span className="text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">{trend}</span>}
+      <div className="p-1.5 md:p-2 bg-zinc-50 rounded-lg">
+        <Icon className="w-4 h-4 md:w-5 md:h-5 text-zinc-900" />
+      </div>
+      {trend && <span className="text-[10px] md:text-xs font-medium text-emerald-600 bg-emerald-50 px-2 py-1 rounded-full">{trend}</span>}
     </div>
     <div>
-       <h3 className="text-sm font-medium text-zinc-500 mb-1">{label}</h3>
-       <p className="text-2xl font-bold text-zinc-900 tracking-tight">{value}</p>
+      <h3 className="text-xs md:text-sm font-medium text-zinc-500 mb-0.5 md:mb-1">{label}</h3>
+      <p className="text-xl md:text-2xl font-bold text-zinc-900 tracking-tight">{value}</p>
     </div>
   </div>
 );
@@ -119,21 +119,21 @@ const StaffDashboardHome = () => {
   };
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 md:space-y-8">
       <div>
-         <h1 className="text-2xl font-bold tracking-tight text-zinc-900">Staff Overview</h1>
-         <p className="text-zinc-500">Welcome back, here's what's happening today.</p>
+        <h1 className="text-xl md:text-2xl font-bold tracking-tight text-zinc-900">Staff Overview</h1>
+        <p className="text-zinc-500 text-sm md:text-base">Welcome back, here's what's happening today.</p>
       </div>
-      
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
         <StatCard label="Total Products" value={stats.products} icon={ShoppingBag} trend="+12.5%" />
         <StatCard label="Total Orders" value={stats.orders} icon={ShoppingCart} trend="+8.2%" />
         <StatCard label="Total Payments" value={stats.payments} icon={CreditCard} trend="+5.3%" />
       </div>
 
-      <div className="bg-white p-6 rounded-xl border border-zinc-200 shadow-sm">
-        <h3 className="text-lg font-semibold text-zinc-900 mb-6">Performance Analytics</h3>
-        <div className="h-[350px] w-full">
+      <div className="bg-white p-4 md:p-6 rounded-xl border border-zinc-200 shadow-sm">
+        <h3 className="text-base md:text-lg font-semibold text-zinc-900 mb-4 md:mb-6">Performance Analytics</h3>
+        <div className="h-[250px] md:h-[350px] w-full">
           <Bar data={chartData} options={chartOptions} />
         </div>
       </div>
